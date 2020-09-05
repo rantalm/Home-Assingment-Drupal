@@ -1,0 +1,4 @@
+name: FAQ Module
+type: module
+core: "8.x"
+decription: faq module

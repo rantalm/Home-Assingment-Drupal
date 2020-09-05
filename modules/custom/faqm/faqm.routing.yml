@@ -1,0 +1,7 @@
+faq.content:
+  path: "/faqm"
+  defaults:
+    _controller: '\Drupal\faqm\Controller\FaqmController::content'
+    _title: "FAQ Module"
+  requirements:
+    _permission: "access content"

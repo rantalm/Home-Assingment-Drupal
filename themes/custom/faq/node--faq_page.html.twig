@@ -1,0 +1,45 @@
+<header role="banner" {{ attributes }}>
+  <div class="jumbotron ">
+    <h1 class="text-center page-title">{{ label }}</h1>
+  </div>
+</header>
+<main class="container">
+  <a href="{{ url('<front>') }}" class="btn btn-primary mb-5">לדף הבית</a>
+  <div class="q-head">
+    {% for cat in faq_data.categories  %}
+      <div class="q-head__item {{ loop.index == 1 ? 'q-head__item--active' : '' }}" data-category={{cat.id}}>
+          {{ cat.term }}
+      </div>
+    {% endfor %}
+  </div>
+
+  {% for cat in faq_data.categories  %}
+    <div id="{{'accordion-' ~ cat.id}}" class="accordion {{ loop.index == 1 ? 'accordion--active' : '' }}" {{ attributes }} data-category={{cat.id}}>
+      {% for q in faq_data.node_list %}
+          {% if q.category == cat.id %}
+            <div class="card">
+              <div class="card-header" id="{{'heading-' ~ cat.id}}">
+                <h5 class="mb-0">
+                  <button class="btn btn-link" data-toggle="collapse" data-target="#a-{{q.category ~ loop.index}}" aria-expanded="true" aria-controls="collapseOne">
+                    {{q.title}}
+                  </button>
+                </h5>
+              </div>
+
+              <div id="a-{{q.category ~ loop.index}}" class="collapse" aria-labelledby="{{'heading-' ~ cat.id}}" data-parent="#{{'accordion-' ~ cat.id}}">
+                <div class="card-body">
+                  {% set answer_f = {
+                        '#type':   'processed_text',
+                        '#text':    q.answer,
+                        '#format': 'full_html',
+                      } %}
+                      {{ answer_f }}
+                </div>
+              </div>
+            </div>
+          {% endif %}
+
+    {% endfor %}
+      </div>
+  {% endfor %}
+<main>

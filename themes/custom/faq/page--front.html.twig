@@ -1,0 +1,24 @@
+<div class="layout-container">
+  <div class="header-links">
+  {% if logged_in %}
+  <a href="{{ url('<front>') | render ~ 'user/logout' }}">התנתקות</a>
+  {% else %}
+  <a href="{{ url('<front>') | render ~ 'user/login' }}">התחברות</a>
+  {% endif %}
+
+    {# page.content #}
+  </div>
+  <header role="banner">
+    <div class="jumbotron ">
+      <h1 class="display-4 text-center">דף ראשי</h1>
+    </div>
+  </header>
+
+  <main role="main" class="container">
+    <a href="{{ url('<front>') | render ~ 'node/10' }}" class="fqa-link text-primary">לדף שאלות ותשובות</a><br>
+    <a href="{{ url('<front>') | render ~ 'node/18' }}" class="fqa-link text-primary">לדף שאלות ותשובות נוסף</a>
+    <div class="layout-content">
+    </div>
+  </main>
+</div>
+     

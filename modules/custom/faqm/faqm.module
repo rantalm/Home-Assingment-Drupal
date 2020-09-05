@@ -1,0 +1,25 @@
+<?php
+
+/**
+ * @file
+ */
+
+include 'util.php';
+include 'inc/ctegories.php';
+
+function faq_preprocess_node(&$args) {
+  $node = $args['node'];
+  if ($node->getType() !== 'faq_page') {
+    return;
+  }
+
+  $categories = get_faq_categories_by_node($node);
+
+  $node_list = get_faq_node_list();
+
+
+  $args['faq_data'] = [
+    'categories' => $categories,
+    'node_list' => $node_list
+  ];
+}

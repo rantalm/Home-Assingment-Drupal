@@ -1,0 +1,35 @@
+<div class="layout-container container">
+
+  <header role="banner">
+    {# page.header #}
+  </header>
+
+  <main role="main">
+    <a id="main-content" tabindex="-1"></a>{# link is in html.html.twig #}
+
+    <div class="layout-content">
+      {# page.content #}
+      {# view.content #}
+      {% if view.categories %}
+        {% for item in view.categories %}
+          <div class="child-wrapper">{{ item }}</div>
+        {% endfor %}
+      {% endif %}
+      
+    </div>{# /.layout-content #}
+
+    {% if page.sidebar_first %}
+      <aside class="layout-sidebar-first" role="complementary">
+        {# page.sidebar_first #}
+      </aside>
+    {% endif %}
+
+  </main>
+
+  {% if page.footer %}
+    <footer role="contentinfo">
+      {# page.footer #}
+    </footer>
+  {% endif %}
+
+</div>{# /.layout-container #}
